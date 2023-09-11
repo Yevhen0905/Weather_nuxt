@@ -13,8 +13,7 @@
           <div class="block-bottom-text-block">
             <div class="block-bottom-text-block-title">Latitude: {{ coords?.lat }}</div>
             <div class="block-bottom-text-block-desc">
-              Latitude lines start at the equator (0 degrees latitude) and run
-              east and west, parallel to the equator.
+              Latitude lines start at the equator (0 degrees latitude) and run east and west, parallel to the equator.
             </div>
           </div>
         </div>
@@ -24,13 +23,12 @@
 </template>
 
 <script setup>
-const props = defineProps({
+  const props = defineProps({
     coords: {
       type: Object,
-      required: true
-    }
-})
-
+      required: true,
+    },
+  });
 </script>
 
 <style scoped></style>

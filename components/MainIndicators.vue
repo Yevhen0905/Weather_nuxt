@@ -62,9 +62,7 @@
               <div class="info-main-text">°C</div>
             </div>
             <div class="card-small-hint">
-              <div
-                class="card-small-pic card-small-pic--margin card-small-pic--pressure"
-              ></div>
+              <div class="card-small-pic card-small-pic--margin card-small-pic--pressure"></div>
               <div class="card-small-text">How hot or cold it really feels</div>
             </div>
           </div>
@@ -98,9 +96,7 @@
             </div>
             <div class="card-small-hint">
               <div class="card-small-pic card-small-pic--sun"></div>
-              <div class="card-small-text">
-                The sky fraction obscured by clouds
-              </div>
+              <div class="card-small-text">The sky fraction obscured by clouds</div>
             </div>
           </div>
         </div>
@@ -110,28 +106,28 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { getPressure, getTime } from '../utils'
+  import {computed} from 'vue';
+  import {getPressure, getTime} from '../utils';
 
-const props = defineProps({
-  weatherInfo: {
-    type: [Object, null],
-    required: true
-  }
-})
+  const props = defineProps({
+    weatherInfo: {
+      type: [Object, null],
+      required: true,
+    },
+  });
 
-const timeZone = computed(() => props.weatherInfo?.timezone)
+  const timeZone = computed(() => props.weatherInfo?.timezone);
 
-const sunrise = computed(() => {
-   return getTime(props.weatherInfo?.sys?.sunrise + timeZone.value)
-})
+  const sunrise = computed(() => {
+    return getTime(props.weatherInfo?.sys?.sunrise + timeZone.value);
+  });
 
-const sunset = computed(() => {
-   return getTime(props.weatherInfo?.sys?.sunset + timeZone.value)
-})
+  const sunset = computed(() => {
+    return getTime(props.weatherInfo?.sys?.sunset + timeZone.value);
+  });
 </script>
 
-<style  lang="scss" scoped>
-@use "~/assets/scss/indicators.scss";
-@use "~/assets/scss/media.scss";
+<style lang="scss" scoped>
+  @use '~/assets/scss/indicators.scss';
+  @use '~/assets/scss/media.scss';
 </style>
