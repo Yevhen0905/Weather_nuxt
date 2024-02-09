@@ -6,9 +6,11 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "deploy": "nuxt generate && gh-pages --dotfiles -d .output/public"
   },
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "@nuxt/devtools": "latest",
     "@nuxtjs/color-mode": "^3.3.0",
     "@types/node": "^18.17.0",
@@ -16,6 +18,5 @@
   },
   "dependencies": {
     "sass": "^1.64.1"
-  },
-  "deploy": "gh-pages -d dist"
+  }
 }
