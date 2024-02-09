@@ -16,5 +16,6 @@
   },
   "dependencies": {
     "sass": "^1.64.1"
-  }
+  },
+  "deploy": "gh-pages -d dist"
 }
