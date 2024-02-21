@@ -12,12 +12,6 @@
         <component :is="`icon-${color}`" @click="$colorMode.preference = color" />
       </li>
     </ul>
-    <!-- <p>
-      <ColorScheme placeholder="..." tag="span">
-        Color mode: <b>{{ $colorMode.preference }}</b>
-        <span v-if="$colorMode.preference === 'system'">&nbsp;(<i>{{ $colorMode.value }}</i> mode detected)</span>
-      </ColorScheme>
-    </p> -->
   </div>
 </template>
 

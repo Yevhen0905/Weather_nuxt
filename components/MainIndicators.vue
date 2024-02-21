@@ -128,6 +128,5 @@
 </script>
 
 <style lang="scss" scoped>
-  @use '~/assets/scss/indicators.scss';
-  @use '~/assets/scss/media.scss';
+  @use '~/assets/scss/main.scss';
 </style>

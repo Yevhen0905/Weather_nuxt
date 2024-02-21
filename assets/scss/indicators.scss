@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 .highlights {
   padding: 28px 16px 16px;
   border-radius: 25px;
@@ -19,7 +21,7 @@
 .card {
   min-height: 230px;
   padding: 16px;
-  background-color: rgba(144, 195, 185, 0.45);
+  background-color: $accept;
   border-radius: 8px;
 }
 
@@ -125,7 +127,7 @@
 .card-small {
   margin-top: 12px;
   padding: 12px 16px;
-  background-color: rgba(144, 195, 185, 0.45);
+  background-color: $accept;
   border-radius: 8px;
 
   &-title {

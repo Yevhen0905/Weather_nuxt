@@ -24,5 +24,5 @@
 </script>
 
 <style lang="scss" scoped>
-  @use '~/assets/scss/weather.scss';
+  @use '~/assets/scss/main.scss';
 </style>

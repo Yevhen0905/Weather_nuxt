@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 .page {
   position: relative;
   display: flex;
@@ -60,7 +62,7 @@
 .info {
   height: 100%;
   padding: 16px;
-  background-color: rgb(144 195 185 / 45%);
+  background-color: $accept;
   border-radius: 25px;
 }
 

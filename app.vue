@@ -2,7 +2,7 @@
   <div class="page">
     <div class="loading" v-if="!weatherInfo">...LOADING</div>
     <main v-else class="main">
-      <ColorModePicker />
+      <!-- <ColorModePicker /> -->
       <div class="container">
         <div class="laptop">
           <div class="sections">
@@ -45,16 +45,19 @@
 
   const isError = computed(() => weatherInfo.value?.cod !== 200);
 
-  function getWeather() {
-    fetch(`${BASE_URL}?q=${searchCity.value}&units=metric&appid=${API_KEY}`)
-      .then((response) => response.json())
-      .then((data) => (weatherInfo.value = data));
-  }
+  const getWeather = async () => {
+    try {
+      await fetch(`${BASE_URL}?q=${searchCity.value}&units=metric&appid=${API_KEY}`)
+        .then((response) => response.json())
+        .then((data) => (weatherInfo.value = data));
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   onMounted(getWeather);
 </script>
 
 <style lang="scss" scoped>
-  @use '~/assets/scss/app.scss';
-  @use '~/assets/scss/media.scss';
+  @use '~/assets/scss/main.scss';
 </style>
