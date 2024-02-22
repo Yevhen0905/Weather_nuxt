@@ -6,7 +6,7 @@
         :key="color"
         :class="{
           preferred: !$colorMode.unknown && color === $colorMode.preference,
-          selected: !$colorMode.unknown && color === $colorMode.value,
+          selected: !$colorMode.unknown && color === $colorMode.value
         }"
       >
         <component :is="`icon-${color}`" @click="$colorMode.preference = color" />

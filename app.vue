@@ -21,7 +21,7 @@
                 </div>
               </div>
             </section>
-            <section class="section section-right">
+            <section :class="['section', 'section-right', {'section_indicator-error': isError}]">
               <MainIndicators v-if="!isError" :weather-info="weatherInfo" />
             </section>
           </div>
@@ -54,6 +54,7 @@
       console.log(e);
     }
   };
+  console.log(weatherInfo);
 
   onMounted(getWeather);
 </script>
