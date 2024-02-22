@@ -7,13 +7,13 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "gh-pages -d .nuxt/dist"
+    "deploy": "gh-pages -d dist --dotfiles"
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0",
     "@nuxt/devtools": "latest",
     "@nuxtjs/color-mode": "^3.3.0",
     "@types/node": "^18.17.0",
+    "gh-pages": "^6.1.1",
     "nuxt": "^3.6.5"
   },
   "dependencies": {
