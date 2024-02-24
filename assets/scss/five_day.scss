@@ -1,0 +1,58 @@
+.forecast_five_day {
+  margin-top: 10px;
+  height: 100%;
+  padding: 16px;
+  background-color: $accept;
+  border-radius: 25px;
+}
+
+.title-position {
+  text-align: center;
+}
+
+.main-days {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.days-item-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 5px;
+  width: 117px;
+
+  &:not(:last-child) {
+    border-right: 1px solid grey;
+  }
+}
+
+.main-days-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.list-info {
+  display: flex;
+  padding: 5px 10px;
+  background: rgb(9 10 10 / 42%);
+}
+
+.time-pic {
+  width: 15px;
+  height: 15px;
+}
+
+.list-date {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding: 2px 0;
+  background: #a0a7a7c2;
+  border-bottom: 1px solid wheat;
+}

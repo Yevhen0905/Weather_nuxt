@@ -2,7 +2,7 @@
   <div class="page">
     <div class="loading" v-if="!weatherInfo">...LOADING</div>
     <main v-else class="main">
-      <!-- <ColorModePicker /> -->
+      <img class="img-bg" :src="`img/weather-bg/${weatherInfo?.weather[0].description}.jpg`" alt="" />
       <div class="container">
         <div class="laptop">
           <div class="sections">
@@ -29,6 +29,9 @@
             <Coords :coords="weatherInfo?.coord" />
             <Humidity :humidity="weatherInfo?.main?.humidity" />
           </div>
+          <div v-if="!isError" class="forecast_five_day">
+            <WeatherFiveDay :forecast="sortWeatherByDay(weatherFiveDay)" />
+          </div>
         </div>
       </div>
     </main>
@@ -37,13 +40,31 @@
 
 <script setup>
   import {ref, onMounted, computed} from 'vue';
-  import {API_KEY, BASE_URL} from './constants';
+  import {API_KEY, BASE_URL, FORECAST_FIVE_DAY_URL} from './constants';
   import {capitalize} from './utils';
 
   const searchCity = ref('Milan');
   const weatherInfo = ref(null);
+  const weatherFiveDay = ref(null);
 
   const isError = computed(() => weatherInfo.value?.cod !== 200);
+
+  const sortWeatherByDay = (arr) => {
+    const separatedArrays = {};
+
+    arr?.forEach((item) => {
+      const dtTxt = item.dt_txt.split(' ')[0];
+
+      if (!separatedArrays[dtTxt]) {
+        separatedArrays[dtTxt] = [];
+      }
+
+      separatedArrays[dtTxt].push(item);
+    });
+
+    const result = Object.values(separatedArrays);
+    return result;
+  };
 
   const getWeather = async () => {
     try {
@@ -56,9 +77,22 @@
   };
   console.log(weatherInfo);
 
+  const getWeatherFiveDay = async () => {
+    try {
+      await fetch(`${FORECAST_FIVE_DAY_URL}?q=${searchCity.value}&units=metric&cnt=40&appid=${API_KEY}`)
+        .then((response) => response.json())
+        .then((data) => (weatherFiveDay.value = data.list));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  console.log(weatherFiveDay);
+
   onMounted(getWeather);
+  onMounted(getWeatherFiveDay);
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @use '~/assets/scss/main.scss';
 </style>

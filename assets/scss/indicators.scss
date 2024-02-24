@@ -1,7 +1,6 @@
 @import './variables.scss';
 
 .highlights {
-  padding: 28px 16px 16px;
   border-radius: 25px;
 
   &-wrapper {
@@ -11,6 +10,7 @@
 }
 
 .title {
+  font-size: 22px;
   padding-bottom: 16px;
 }
 

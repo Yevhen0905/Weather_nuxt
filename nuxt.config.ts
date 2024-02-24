@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   devtools: {enabled: true},
   modules: ['@nuxtjs/color-mode'],
-  css: ['~/assets/scss/main.scss'],
+//   css: ['~/assets/scss/main.scss'],
   app: {
     head: {
       title: 'Weather Forecast',
