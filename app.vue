@@ -2,14 +2,14 @@
   <div class="page">
     <div class="loading" v-if="!weatherInfo">...LOADING</div>
     <main v-else class="main">
-      <img class="img-bg" :src="`img/weather-bg/${weatherInfo?.weather[0].description}.jpg`" alt="" />
+      <img v-if="!isError" class="img-bg" :src="`img/weather-bg/${weatherInfo?.weather[0]?.description}.jpg`" alt="" />
       <div class="container">
         <div class="laptop">
           <div class="sections">
             <section :class="['section', 'section-left', {'section-error': isError}]">
               <div class="info">
                 <div class="city-inner">
-                  <input type="text" class="search" v-model="searchCity" @keyup.enter="getWeather" />
+                  <input type="text" class="search" v-model="searchCity" @keyup.enter="getWeatherDay" />
                 </div>
                 <p class="text_prompt">Enter your city</p>
                 <WeatherForecast v-if="!isError" :weather-info="weatherInfo" />
@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-  import {ref, onMounted, computed} from 'vue';
+  import {ref, onMounted, computed, watch} from 'vue';
   import {API_KEY, BASE_URL, FORECAST_FIVE_DAY_URL} from './constants';
   import {capitalize} from './utils';
 
@@ -85,6 +85,11 @@
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const getWeatherDay = () => {
+    getWeather();
+    getWeatherFiveDay();
   };
 
   console.log(weatherFiveDay);

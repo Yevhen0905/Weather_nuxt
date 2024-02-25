@@ -32,5 +32,5 @@
 </script>
 
 <style lang="scss">
-  @use '~/assets/scss/main.scss';
+//   @use '~/assets/scss/main.scss';
 </style>

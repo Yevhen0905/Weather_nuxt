@@ -4,16 +4,96 @@
   padding: 16px;
   background-color: $accept;
   border-radius: 25px;
+  width: 100%;
 }
 
 .title-position {
   text-align: center;
 }
 
+.swiper-wrapper {
+  gap: 7px;
+}
+
 .main-days {
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
+  max-width: 1047px;
+  width: 95%;
+
+  @media only screen and (max-width: 1140px) {
+    max-width: 980px;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 1070px) {
+    max-width: 918px;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 1005px) {
+    max-width: 855px;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 945px) {
+    max-width: 800px;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 890px) {
+    max-width: 750px;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 840px) {
+    max-width: 700px;
+    width: 100%;
+  }
+
+  
+  @media only screen and (max-width: 790px) {
+    max-width: 650px;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 740px) {
+    max-width: 600px;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 690px) {
+    max-width: 550px;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 640px) {
+    max-width: 500px;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 590px) {
+    max-width: 450px;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 540px) {
+    max-width: 400px;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 490px) {
+    max-width: 350px;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 440px) {
+    max-width: 300px;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 390px) {
+    max-width: 280px;
+    width: 100%;
+  }
 }
 
 .days-item-day {
@@ -24,22 +104,23 @@
   width: 117px;
 
   &:not(:last-child) {
-    border-right: 1px solid grey;
+    border-right: 1px solid #595555;
   }
 }
 
 .main-days-list {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  border-radius: 10px;
-  overflow: hidden;
+  width: auto;
+
+  // //   flex-wrap: wrap;
+  //     border-radius: 10px;
+  //     // overflow: hidden;
 }
 
 .list-info {
   display: flex;
   padding: 5px 10px;
-  background: rgb(9 10 10 / 42%);
+  background-color: rgb(77 82 82 / 76%);
+  border-radius: 0 0 10px 10px;
 }
 
 .time-pic {
@@ -52,7 +133,11 @@
   font-weight: 500;
   letter-spacing: 0.1em;
   text-align: center;
-  padding: 2px 0;
-  background: #a0a7a7c2;
+  padding: 2px 15px;
+  background: rgb(9 10 10 / 42%);
   border-bottom: 1px solid wheat;
+  border-radius: 10px 10px 0 0;
+}
+
+.long-term-forecast {
 }

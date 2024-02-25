@@ -1,8 +1,8 @@
 <template>
   <div class="section long-term-forecast">
     <div class="title title-position">Weather forecast for 5 days</div>
-    <div class="main-days">
-      <div class="main-days-list" v-for="day in forecast" :key="day">
+    <Swiper class="main-days" :slides-per-view="'auto'">
+      <SwiperSlide class="main-days-list" v-for="day in forecast" :key="day">
         <div class="list-date">{{ convertDate(day[0].dt_txt) }}</div>
         <div class="list-info">
           <div class="days-item-day" v-for="time in day" :key="time">
@@ -12,12 +12,15 @@
             <div>Windi {{ time?.wind?.speed }} m/s</div>
           </div>
         </div>
-      </div>
-    </div>
+      </SwiperSlide>
+    </Swiper>
   </div>
 </template>
 
 <script setup>
+  import {Swiper, SwiperSlide} from 'swiper/vue';
+  import 'swiper/css';
+
   const props = defineProps({
     forecast: {
       type: [Array, null],
@@ -33,5 +36,5 @@
 </script>
 
 <style lang="scss">
-  @use '~/assets/scss/main.scss';
+  //   @use '~/assets/scss/main.scss';
 </style>
