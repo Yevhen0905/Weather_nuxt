@@ -1,6 +1,7 @@
 <template>
   <div class="img-wrapper">
-    <img v-if="!isError" class="img-bg" :src="`img/weather-bg/${background?.weather[0]?.description}.jpg`" alt="" />
+    <img v-if="!error" class="img-bg" :src="`img/weather-bg/${background?.weather[0]?.description}.jpg`" alt="" />
+    <img v-else class="img-bg" src="img/weather-bg/weather.jpg" alt="" />
   </div>
 </template>
 
@@ -8,6 +9,10 @@
   const props = defineProps({
     background: {
       type: Object,
+      required: true
+    },
+    error: {
+      type: Boolean,
       required: true
     }
   });

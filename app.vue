@@ -2,7 +2,7 @@
   <div class="page">
     <div class="loading" v-if="!weatherInfo">...LOADING</div>
     <main v-else class="main">
-      <MainBackground v-if="!isError" :background="weatherInfo" />
+      <MainBackground :error="isError" :background="weatherInfo" />
       <div class="container">
         <div class="laptop">
           <div class="sections">
@@ -10,15 +10,15 @@
               <div class="info">
                 <div class="city-inner">
                   <input type="text" class="search" v-model="searchCity" @keyup.enter="getWeatherDay" />
+                  <button class="btn-search" @click="getWeatherDay"></button>
                 </div>
-                <p class="text_prompt">Enter your city</p>
-                <WeatherForecast v-if="!isError" :weather-info="weatherInfo" />
+                <p v-if="!isError" class="text_prompt">Enter your city</p>
                 <div v-else class="error">
-                  <div v-if="weatherInfo?.message" class="error-message">
-                    <div class="error-title">An error occurred. Enter the correct city</div>
-                    {{ capitalize(weatherInfo?.message) }}
+                  <div class="error-message">
+                    <div class="error-title">Enter the correct city</div>
                   </div>
                 </div>
+                <WeatherForecast v-if="!isError" :weather-info="weatherInfo" />
               </div>
             </section>
             <section :class="['section', 'section-right', {'section_indicator-error': isError}]">
@@ -43,9 +43,8 @@
 <script setup>
   import {ref, onMounted, computed, watch} from 'vue';
   import {API_KEY, BASE_URL, FORECAST_FEW_DAY_URL} from './constants';
-  import {capitalize} from './utils';
 
-  const searchCity = ref('Miami');
+  const searchCity = ref('');
   const weatherInfo = ref(null);
   const weatherFewDays = ref(null);
 
