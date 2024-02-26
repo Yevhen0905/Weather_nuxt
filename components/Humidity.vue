@@ -23,11 +23,9 @@
   const props = defineProps({
     humidity: {
       type: Number,
-      required: true,
-    },
+      required: true
+    }
   });
 </script>
 
-<style lang="scss">
-//   @use '~/assets/scss/main.scss';
-</style>
+<style lang="scss"></style>

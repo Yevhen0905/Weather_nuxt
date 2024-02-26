@@ -23,6 +23,4 @@
   const data = new Date().toLocaleString('en-EN', {weekday: 'short', year: 'numeric', month: 'long', day: 'numeric'});
 </script>
 
-<style lang="scss">
-//   @use '~/assets/scss/main.scss';
-</style>
+<style lang="scss"></style>

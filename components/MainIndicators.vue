@@ -112,8 +112,8 @@
   const props = defineProps({
     weatherInfo: {
       type: [Object, null],
-      required: true,
-    },
+      required: true
+    }
   });
 
   const timeZone = computed(() => props.weatherInfo?.timezone);
@@ -127,6 +127,4 @@
   });
 </script>
 
-<style lang="scss">
-//   @use '~/assets/scss/main.scss';
-</style>
+<style lang="scss"></style>

@@ -26,11 +26,9 @@
   const props = defineProps({
     coords: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   });
 </script>
 
-<style lang="scss">
-//   @use '~/assets/scss/main.scss';
-</style>
+<style lang="scss"></style>

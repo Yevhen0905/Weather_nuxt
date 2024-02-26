@@ -1,4 +1,4 @@
-.forecast_five_day {
+.forecast_few-days {
   margin-top: 10px;
   height: 100%;
   padding: 16px;
@@ -49,7 +49,6 @@
     width: 100%;
   }
 
-  
   @media only screen and (max-width: 790px) {
     max-width: 650px;
     width: 100%;
@@ -110,10 +109,6 @@
 
 .main-days-list {
   width: auto;
-
-  // //   flex-wrap: wrap;
-  //     border-radius: 10px;
-  //     // overflow: hidden;
 }
 
 .list-info {

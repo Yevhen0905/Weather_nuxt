@@ -2,7 +2,7 @@
   <div class="page">
     <div class="loading" v-if="!weatherInfo">...LOADING</div>
     <main v-else class="main">
-      <img v-if="!isError" class="img-bg" :src="`img/weather-bg/${weatherInfo?.weather[0]?.description}.jpg`" alt="" />
+      <MainBackground v-if="!isError" :background="weatherInfo" />
       <div class="container">
         <div class="laptop">
           <div class="sections">
@@ -14,8 +14,8 @@
                 <p class="text_prompt">Enter your city</p>
                 <WeatherForecast v-if="!isError" :weather-info="weatherInfo" />
                 <div v-else class="error">
-                  <div class="error-title">An error occurred. Enter the correct city</div>
                   <div v-if="weatherInfo?.message" class="error-message">
+                    <div class="error-title">An error occurred. Enter the correct city</div>
                     {{ capitalize(weatherInfo?.message) }}
                   </div>
                 </div>
@@ -25,12 +25,14 @@
               <MainIndicators v-if="!isError" :weather-info="weatherInfo" />
             </section>
           </div>
-          <div v-if="!isError" class="sections">
-            <Coords :coords="weatherInfo?.coord" />
-            <Humidity :humidity="weatherInfo?.main?.humidity" />
-          </div>
-          <div v-if="!isError" class="forecast_five_day">
-            <WeatherFiveDay :forecast="sortWeatherByDay(weatherFiveDay)" />
+          <div class="additional-info" v-if="!isError">
+            <div class="sections">
+              <Coords :coords="weatherInfo?.coord" />
+              <Humidity :humidity="weatherInfo?.main?.humidity" />
+            </div>
+            <div class="forecast_few-days">
+              <WeatherFewDays :forecast="sortWeatherByDays(weatherFewDays)" />
+            </div>
           </div>
         </div>
       </div>
@@ -40,25 +42,23 @@
 
 <script setup>
   import {ref, onMounted, computed, watch} from 'vue';
-  import {API_KEY, BASE_URL, FORECAST_FIVE_DAY_URL} from './constants';
+  import {API_KEY, BASE_URL, FORECAST_FEW_DAY_URL} from './constants';
   import {capitalize} from './utils';
 
-  const searchCity = ref('Milan');
+  const searchCity = ref('Miami');
   const weatherInfo = ref(null);
-  const weatherFiveDay = ref(null);
+  const weatherFewDays = ref(null);
 
   const isError = computed(() => weatherInfo.value?.cod !== 200);
 
-  const sortWeatherByDay = (arr) => {
+  const sortWeatherByDays = (arr) => {
     const separatedArrays = {};
 
     arr?.forEach((item) => {
       const dtTxt = item.dt_txt.split(' ')[0];
-
       if (!separatedArrays[dtTxt]) {
         separatedArrays[dtTxt] = [];
       }
-
       separatedArrays[dtTxt].push(item);
     });
 
@@ -75,13 +75,12 @@
       console.log(e);
     }
   };
-  console.log(weatherInfo);
 
-  const getWeatherFiveDay = async () => {
+  const getWeatherFewDays = async () => {
     try {
-      await fetch(`${FORECAST_FIVE_DAY_URL}?q=${searchCity.value}&units=metric&cnt=40&appid=${API_KEY}`)
+      await fetch(`${FORECAST_FEW_DAY_URL}?q=${searchCity.value}&units=metric&cnt=40&appid=${API_KEY}`)
         .then((response) => response.json())
-        .then((data) => (weatherFiveDay.value = data.list));
+        .then((data) => (weatherFewDays.value = data.list));
     } catch (e) {
       console.log(e);
     }
@@ -89,13 +88,17 @@
 
   const getWeatherDay = () => {
     getWeather();
-    getWeatherFiveDay();
+    getWeatherFewDays();
   };
 
-  console.log(weatherFiveDay);
+  watch(searchCity, (newValue) => {
+    localStorage.setItem('searchCity', JSON.stringify(newValue));
+  });
+
+  onMounted(() => (searchCity.value = JSON.parse(localStorage.getItem('searchCity')) || ''));
 
   onMounted(getWeather);
-  onMounted(getWeatherFiveDay);
+  onMounted(getWeatherFewDays);
 </script>
 
 <style lang="scss">

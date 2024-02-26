@@ -35,6 +35,4 @@
   const getTimeWithDate = (date) => date.split(' ')[1].slice(0, -3);
 </script>
 
-<style lang="scss">
-  //   @use '~/assets/scss/main.scss';
-</style>
+<style lang="scss"></style>
