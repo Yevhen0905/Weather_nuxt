@@ -93,7 +93,7 @@
 
 @media (max-width: 510px) {
   .card {
-    padding: 12px;
+    padding: 10px;
     min-height: 0;
 
     &-title {
@@ -113,7 +113,32 @@
     }
   }
 
+  .list-date { 
+    font-size: 16px;
+  }
+
   .block-bottom-texts {
     padding-top: 5px;
+  }
+
+  .card-small {
+    margin-top: 3px;
+    padding: 8px;
+  }
+
+  .section-bottom {
+    margin-top: 0;
+  }
+
+  .time-date {
+    font-size: 14px;
+  }
+
+  .day-temp {
+    font-size: 14px;
+  }
+
+  .day-wind {
+    font-size: 14px;
   }
 }

@@ -5,8 +5,8 @@
       <MainBackground :error="isError" :background="weatherInfo" />
       <div class="container">
         <div class="laptop">
-          <div class="sections">
-            <section :class="['section', 'section-left', {'section-error': isError}]">
+          <div :class="['sections', {'section-error': isError}]">
+            <section :class="['section', 'section-left']">
               <div class="info">
                 <div class="city-inner">
                   <input type="text" class="search" v-model="searchCity" @keyup.enter="getWeatherDay" />
@@ -30,9 +30,7 @@
               <Coords :coords="weatherInfo?.coord" />
               <Humidity :humidity="weatherInfo?.main?.humidity" />
             </div>
-            <div class="forecast_few-days">
-              <WeatherFewDays :forecast="sortWeatherByDays(weatherFewDays)" />
-            </div>
+            <WeatherFewDays :forecast="sortWeatherByDays(weatherFewDays)" />
           </div>
         </div>
       </div>

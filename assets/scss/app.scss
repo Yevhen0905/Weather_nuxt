@@ -12,7 +12,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  //   min-height: 100vh;
   padding: 20px 0;
 }
 
@@ -48,9 +47,17 @@ img.img-bg {
 }
 
 .section-error {
-  min-width: 235px;
-  width: auto;
-  padding-right: 0;
+  gap: 0;
+
+  .section-left {
+    min-width: 235px;
+    width: auto;
+    padding-right: 0;
+  }
+
+  .section-right {
+    margin-top: 0;
+  }
 }
 
 .section-right {
@@ -97,7 +104,7 @@ img.img-bg {
 
 .search {
   width: 100%;
-  padding: 16px;
+  padding: 16px 42px 16px 16px;
   font-family: 'Inter', Arial, sans-serif;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.58);
