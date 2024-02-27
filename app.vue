@@ -17,6 +17,7 @@
                   <div class="error-message">
                     <div class="error-title">Enter the correct city</div>
                   </div>
+                  <div>{{ weatherInfo?.message }}</div>
                 </div>
                 <WeatherForecast v-if="!isError" :weather-info="weatherInfo" />
               </div>
@@ -72,6 +73,8 @@
       console.log(e);
     }
   };
+
+  console.log(weatherInfo);
 
   const getWeatherFewDays = async () => {
     try {
