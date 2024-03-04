@@ -22,8 +22,9 @@
                 <WeatherForecast v-if="!isError" :weather-info="weatherInfo" />
               </div>
             </section>
-            <section :class="['section', 'section-right', {'section_indicator-error': isError}]">
-              <MainIndicators v-if="!isError" :weather-info="weatherInfo" />
+            <section v-if="!isError" :class="['section', 'section-right', {'section_indicator-error': isError}]">
+              <WeatherFewDays :forecast="weatherFewDays" />
+              <MainIndicators :weather-info="weatherInfo" />
             </section>
           </div>
           <div class="additional-info" v-if="!isError">
@@ -31,7 +32,6 @@
               <Coords :coords="weatherInfo?.coord" />
               <Humidity :humidity="weatherInfo?.main?.humidity" />
             </div>
-            <WeatherFewDays :forecast="sortWeatherByDays(weatherFewDays)" />
           </div>
         </div>
       </div>
@@ -49,20 +49,20 @@
 
   const isError = computed(() => weatherInfo.value?.cod !== 200);
 
-  const sortWeatherByDays = (arr) => {
-    const separatedArrays = {};
+  //   const sortWeatherByDays = (arr) => {
+  //     const separatedArrays = {};
 
-    arr?.forEach((item) => {
-      const dtTxt = item.dt_txt.split(' ')[0];
-      if (!separatedArrays[dtTxt]) {
-        separatedArrays[dtTxt] = [];
-      }
-      separatedArrays[dtTxt].push(item);
-    });
+  //     arr?.forEach((item) => {
+  //       const dtTxt = item.dt_txt.split(' ')[0];
+  //       if (!separatedArrays[dtTxt]) {
+  //         separatedArrays[dtTxt] = [];
+  //       }
+  //       separatedArrays[dtTxt].push(item);
+  //     });
 
-    const result = Object.values(separatedArrays);
-    return result;
-  };
+  //     const result = Object.values(separatedArrays);
+  //     return result;
+  //   };
 
   const getWeather = async () => {
     try {
@@ -85,6 +85,8 @@
       console.log(e);
     }
   };
+
+  console.log(weatherFewDays);
 
   const getWeatherDay = () => {
     getWeather();

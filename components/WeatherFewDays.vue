@@ -5,14 +5,12 @@
       <div class="section long-term-forecast">
         <Swiper class="main-days" :slides-per-view="'auto'">
           <SwiperSlide class="main-days-list" v-for="day in forecast" :key="day">
-            <div class="list-date">{{ convertDate(day[0].dt_txt) }}</div>
             <div class="list-info">
-              <div class="days-item-day" v-for="time in day" :key="time">
-                <div class="time-date">{{ getTimeWithDate(time.dt_txt) }}</div>
-                <img :src="`img/weather-main/${time?.weather[0].description}.png`" class="time-pic" />
-                <div class="day-temp">{{ Math.round(time?.main?.temp) }} °C</div>
-                <div class="day-wind">Wind {{ time?.wind?.speed }} m/s</div>
-              </div>
+              <div class="list-date">{{ convertDate(day.dt_txt) }}</div>
+              <div class="list-time">{{ getTimeWithDate(day.dt_txt) }}</div>
+              <img :src="`img/weather-main/${day?.weather[0].description}.png`" class="time-pic" />
+              <div class="day-temp">{{ Math.round(day?.main?.temp) }} °C</div>
+              <div class="day-wind">Wind {{ day?.wind?.speed }} m/s</div>
             </div>
           </SwiperSlide>
         </Swiper>
