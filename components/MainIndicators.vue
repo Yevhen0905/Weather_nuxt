@@ -48,7 +48,9 @@
           <div class="card-info">
             <div class="card-centered">
               <div class="info-main">
-                <div class="info-main-num">{{ getPressure(weatherInfo?.main?.pressure) }}</div>
+                <div class="info-main-num">
+                  {{ getPressure(weatherInfo?.main?.pressure) }}
+                </div>
                 <div class="info-main-text">mm</div>
               </div>
             </div>
@@ -58,11 +60,15 @@
           <div class="card-small-title">Feels like</div>
           <div class="card-small-info">
             <div class="card-small-data">
-              <div class="info-main-num">{{ Math.round(weatherInfo?.main?.feels_like) }}</div>
+              <div class="info-main-num">
+                {{ Math.round(weatherInfo?.main?.feels_like) }}
+              </div>
               <div class="info-main-text">°C</div>
             </div>
             <div class="card-small-hint">
-              <div class="card-small-pic card-small-pic--margin card-small-pic--pressure"></div>
+              <div
+                class="card-small-pic card-small-pic--margin card-small-pic--pressure"
+              ></div>
               <div class="card-small-text">How hot or cold it really feels</div>
             </div>
           </div>

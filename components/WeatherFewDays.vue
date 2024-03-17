@@ -8,7 +8,10 @@
             <div class="list-info">
               <div class="list-date">{{ convertDate(day.dt_txt) }}</div>
               <div class="list-time">{{ getTimeWithDate(day.dt_txt) }}</div>
-              <img :src="`img/weather-main/${day?.weather[0].description}.png`" class="time-pic" />
+              <img
+                :src="`img/weather-main/${day?.weather[0].description}.png`"
+                class="time-pic"
+              />
               <div class="day-temp">{{ Math.round(day?.main?.temp) }} °C</div>
               <div class="day-wind">Wind {{ day?.wind?.speed }} m/s</div>
             </div>
@@ -31,7 +34,11 @@
   });
 
   const convertDate = (date) => {
-    return new Date(date.split(' ')[0]).toLocaleString('en-EN', {weekday: 'short', month: 'long', day: 'numeric'});
+    return new Date(date.split(' ')[0]).toLocaleString('en-EN', {
+      weekday: 'short',
+      month: 'long',
+      day: 'numeric'
+    });
   };
 
   const getTimeWithDate = (date) => date.split(' ')[1].slice(0, -3);

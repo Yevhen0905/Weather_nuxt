@@ -9,7 +9,12 @@
             <section :class="['section', 'section-left']">
               <div class="info">
                 <div class="city-inner">
-                  <input type="text" class="search" v-model="searchCity" @keyup.enter="getWeatherDay" />
+                  <input
+                    type="text"
+                    class="search"
+                    v-model="searchCity"
+                    @keyup.enter="getWeatherDay"
+                  />
                   <button class="btn-search" @click="getWeatherDay"></button>
                 </div>
                 <p v-if="!isError" class="text_prompt">Enter your city</p>
@@ -22,7 +27,10 @@
                 <WeatherForecast v-if="!isError" :weather-info="weatherInfo" />
               </div>
             </section>
-            <section v-if="!isError" :class="['section', 'section-right', {'section_indicator-error': isError}]">
+            <section
+              v-if="!isError"
+              :class="['section', 'section-right', {'section_indicator-error': isError}]"
+            >
               <WeatherFewDays :forecast="weatherFewDays" />
               <MainIndicators :weather-info="weatherInfo" />
             </section>
@@ -49,21 +57,6 @@
 
   const isError = computed(() => weatherInfo.value?.cod !== 200);
 
-  //   const sortWeatherByDays = (arr) => {
-  //     const separatedArrays = {};
-
-  //     arr?.forEach((item) => {
-  //       const dtTxt = item.dt_txt.split(' ')[0];
-  //       if (!separatedArrays[dtTxt]) {
-  //         separatedArrays[dtTxt] = [];
-  //       }
-  //       separatedArrays[dtTxt].push(item);
-  //     });
-
-  //     const result = Object.values(separatedArrays);
-  //     return result;
-  //   };
-
   const getWeather = async () => {
     try {
       await fetch(`${BASE_URL}?q=${searchCity.value}&units=metric&appid=${API_KEY}`)
@@ -78,7 +71,9 @@
 
   const getWeatherFewDays = async () => {
     try {
-      await fetch(`${FORECAST_FEW_DAY_URL}?q=${searchCity.value}&units=metric&cnt=40&appid=${API_KEY}`)
+      await fetch(
+        `${FORECAST_FEW_DAY_URL}?q=${searchCity.value}&units=metric&cnt=40&appid=${API_KEY}`
+      )
         .then((response) => response.json())
         .then((data) => (weatherFewDays.value = data.list));
     } catch (e) {
@@ -97,7 +92,9 @@
     localStorage.setItem('searchCity', JSON.stringify(newValue));
   });
 
-  onMounted(() => (searchCity.value = JSON.parse(localStorage.getItem('searchCity')) || ''));
+  onMounted(
+    () => (searchCity.value = JSON.parse(localStorage.getItem('searchCity')) || '')
+  );
 
   onMounted(getWeather);
   onMounted(getWeatherFewDays);
