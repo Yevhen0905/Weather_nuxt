@@ -97,7 +97,7 @@ img.img-bg {
   position: relative;
   height: 100%;
   padding: 16px;
-  background-color: $accept;
+  backdrop-filter: $filter;
   border-radius: 25px;
 }
 
